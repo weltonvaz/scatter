@@ -18,9 +18,9 @@ delta = [sqrt(x) for x in index]
 theta = [t + angle for t in index]
 
 # =C3*COS(RADIANOS(D3))
-data1 = [delta[i-1] * cos(radians(theta[i])) for i,d in enumerate(delta)]
+data1 = [delta[i] * cos(radians(theta[i])) for i,d in enumerate(delta)]
 # =C3*SEN(RADIANOS(D3))
-data2 = [delta[i-1] * sin(radians(theta[i])) for i,d in enumerate(delta)]
+data2 = [delta[i] * sin(radians(theta[i])) for i,d in enumerate(delta)]
 
 # plot
 pyplot.scatter(data1, data2)

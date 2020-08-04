@@ -1,8 +1,9 @@
 # funcoes usadas dos pacotes numpy e matplotlib
 
+from mpl_toolkits import mplot3d 
 from matplotlib import pyplot
 from math import sqrt, radians
-from math import sin, cos
+from math import sin, cos, tan
 import csv
 
 # constantes
@@ -10,24 +11,26 @@ phi = 1.168034
 ang = 360/phi
 angle = 360 - ang
 
-# listas
-dados1 = []
-dados2 = []
-
 # prepação:
 
-with open('data1.csv', 'r') as arquivo_csv:
-    leitor = csv.reader(arquivo_csv, delimiter='\n')
-    for x in leitor:
-        dados1.append(x)
+index = [x for x in range(1056) if x % 2 != 0]
+delta = [sqrt(x) for x in index]
 
+# =D2+$A$3
+theta = [t + angle for t in index]
 
-with open('data2.csv', 'r') as arquivo_csv:
-    leitor = csv.reader(arquivo_csv, delimiter='\n')
-    for y in leitor:
-        dados2.append(y)
+# =C3*COS(RADIANOS(D3))
+data1 = [delta[i] * cos(radians(theta[i])) for i,d in enumerate(delta)]
+# =C3*SEN(RADIANOS(D3))
+data2 = [delta[i] * sin(radians(theta[i])) for i,d in enumerate(delta)]
+# =C3*TAN(RADIANOS(D3))
+data3 = [delta[i] * tan(radians(theta[i])) for i,d in enumerate(delta)]
+
+# Criando figura 
+fig = pyplot.figure(figsize = (10, 7)) 
+ax = pyplot.axes(projection ="3d") 
 
 # plot
-pyplot.scatter(dados1, dados2)
+ax.scatter3D(data1, data2, data3)
 pyplot.title('Gráfico de Dispersão entre data1 e data2')
 pyplot.show()
