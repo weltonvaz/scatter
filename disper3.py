@@ -13,7 +13,7 @@ angle = 360 - ang
 
 # prepação:
 
-index = [x for x in range(1056) if x % 2 != 0]
+index = [x for x in range(1024) if x % 2 != 0]
 delta = [sqrt(x) for x in index]
 
 # =D2+$A$3
@@ -32,5 +32,5 @@ ax = pyplot.axes(projection ="3d")
 
 # plot
 ax.scatter3D(data1, data2, data3)
-pyplot.title('Gráfico de Dispersão entre data1 e data2')
+pyplot.title('Gráfico de Dispersão 3D - entre data1, data2 e data3')
 pyplot.show()
